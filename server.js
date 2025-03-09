@@ -31,10 +31,10 @@ let db;
 const connectDB = async () => {
     try {
         db = await mysql.createConnection({
-            host: process.env.DB_HOST,
-            user: process.env.DB_USER,
-            password: process.env.DB_PASS,
-            database: process.env.DB_NAME,
+            host: process.env.DB_HOST,   //change to the actual host or domain
+            user: process.env.DB_USER,    //change to the actual database user sa hostinger
+            password: process.env.DB_PASS, //change to the actual password of the database sa hostinger
+            database: process.env.DB_NAME,   //change to the actual name of the database sa hostinger
         });
         console.log("Connected to MySQL database");
     } catch (error) {

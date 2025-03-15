@@ -7,9 +7,7 @@ import cors from "cors";
 const app = express();
 const PORT = process.env.PORT || 3000;  // Use Render’s assigned port if available
 
-server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+
 
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -78,6 +76,9 @@ app.get("/messages/:sender_id/:receiver_id", async (req, res) => {
     } catch (err) {
         res.status(500).json({ error: "Database error" });
     }
+});
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
 
 // Start the server after connecting to the database

@@ -21,10 +21,10 @@ let db;
 const connectDB = async () => {
     try {
         db = await mysql.createConnection({
-            host: process.env.DB_HOST,
-            user: process.env.DB_USER,
-            password: process.env.DB_PASS,
-            database: process.env.DB_NAME,
+            host: "cuadritobake.shop",
+            user: "cuadritoadmin",
+            password: "Cuadrito_123",
+            database: "cuadrito",
         });
         console.log("Connected to MySQL database");
     } catch (error) {

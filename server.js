@@ -77,16 +77,14 @@ app.get("/messages/:sender_id/:receiver_id", async (req, res) => {
         res.status(500).json({ error: "Database error" });
     }
 });
-server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+
 
 // Start the server after connecting to the database
 const startServer = async () => {
     await connectDB();
-    server.listen(3000, () => {
-        console.log("Server running on port 3000");
-    });
+   server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
 };
 
 startServer();

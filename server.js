@@ -21,7 +21,7 @@ let db;
 const connectDB = async () => {
     try {
         db = await mysql.createConnection({
-            host: "194.59.164.63",
+            host: "34.211.200.85",
             user: "u471919822_cuadritodb",
             password: "Cuadrito_123",
             database: "u471919822_cuadritoDB",

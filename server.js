@@ -5,6 +5,12 @@ import mysql from "mysql2/promise";
 import cors from "cors";
 
 const app = express();
+const PORT = process.env.PORT || 3000;  // Use Render’s assigned port if available
+
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {

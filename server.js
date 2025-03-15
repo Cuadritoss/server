@@ -22,9 +22,9 @@ const connectDB = async () => {
     try {
         db = await mysql.createConnection({
             host: "cuadritobake.shop",
-            user: "cuadritoadmin",
+            user: "u471919822_cuadritodb",
             password: "Cuadrito_123",
-            database: "cuadrito",
+            database: "u471919822_cuadritoDB",
         });
         console.log("Connected to MySQL database");
     } catch (error) {

@@ -43,6 +43,20 @@ const connectDB = async () => {
     }
 };
 
+app.get('/', (req, res) => {
+    res.send('Welcome to Cuadrito Bakeshop!');
+});
+
+app.get("/", (req, res) => {
+    res.send("Welcome to Cuadrito Bakeshop!");
+});
+
+app.get("/messages/:sender_id/:receiver_id", async (req, res) => {
+    const { sender_id, receiver_id } = req.params;
+
+    // Your logic to fetch messages
+});
+
 io.on("connection", (socket) => {
     console.log("User connected:", socket.id);
 

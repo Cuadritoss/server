@@ -27,7 +27,7 @@ const connectDB = async () => {
         db = await mysql.createConnection({
             host: "srv1859.hstgr.io",
             user: "u471919822_cuadritoadmin",
-            password: "Cuadrito_123",
+            password: "cuadritoDb_123",
             database: "u471919822_cuadrito",
         });
         console.log("Connected to MySQL database");

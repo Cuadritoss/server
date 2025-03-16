@@ -5,7 +5,7 @@ import mysql from "mysql2/promise";
 import cors from "cors";
 
 const app = express();
-const PORT = process.env.PORT || 3000;  // Use Render’s assigned port if available
+const PORT = process.env.PORT || 10000;  // Use Render-assigned port
 
 
 

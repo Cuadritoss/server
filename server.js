@@ -17,7 +17,7 @@ const io = new Server(server, {
 });
 
 app.use(cors({
-    origin: "*",
+    origin: "https://cuadritobake.shop/messages",
     methods: ["GET", "POST"],
 }));
 app.use(express.json());

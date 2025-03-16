@@ -28,7 +28,7 @@ const connectDB = async () => {
             host: "srv1859.hstgr.io",
             user: "u471919822_cuadritodb",
             password: "cuadritoDb_123",
-            database: "u471919822_cuadrito",
+            database: "u471919822_cuadritoDB",
         });
         console.log("Connected to MySQL database");
     } catch (error) {

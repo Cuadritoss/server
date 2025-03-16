@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 10000;  // Use Render-assigned port
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: ["https://cuadritobake.shop"], // ✅ Allow only your frontend
+        origin: ["https://server-1-ltau.onrender.com"], // ✅ Allow only your frontend
         methods: ["GET", "POST"],
         credentials: true
     },

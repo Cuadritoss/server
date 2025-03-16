@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 10000;  // Use Render-assigned port
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "*", // Removed invalid import statement
+        origin: "https://cuadritobake.shop/messages", // Removed invalid import statement
     },
 });
 

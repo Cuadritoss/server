@@ -27,14 +27,16 @@ app.use(express.json());
 
 let db;
 
-// Initialize Database Connection
+// Create a connection pool
 const connectDB = async () => {
     try {
-        db = await mysql.createConnection({
+        db = mysql.createPool({
             host: "srv1859.hstgr.io",
             user: "u471919822_cuadritodb",
             password: "cuadritoDb_123",
             database: "u471919822_cuadritoDB",
+            connectionLimit: 10, // Set connection pool size (adjust as needed)
+            connectTimeout: 10000, // Timeout for connections (10 seconds)
         });
         console.log("Connected to MySQL database");
     } catch (error) {
@@ -42,6 +44,9 @@ const connectDB = async () => {
         process.exit(1);
     }
 };
+
+// Ensure database connection is established
+connectDB();
 
 app.get('/', (req, res) => {
     res.send('Welcome to Cuadrito Bakeshop!');

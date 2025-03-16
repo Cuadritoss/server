@@ -10,14 +10,7 @@ const PORT = process.env.PORT || 10000;  // Use Render-assigned port
 
 
 const server = http.createServer(app);
-const io = new Server(server, {
-    cors: {
-        origin: ["https://cuadritobake.shop"], // ✅ Allow only your frontend
-        methods: ["GET", "POST"],
-        credentials: true
-    },
-    transports: ["websocket", "polling"] // ✅ Ensure both transports work
-});
+const socket = io("http://localhost:3000");  // Ensure to use the correct URL
 
 app.use(cors({
     origin: "https://cuadritobake.shop",

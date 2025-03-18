@@ -52,9 +52,6 @@ app.get('/', (req, res) => {
     res.send('Welcome to Cuadrito Bakeshop!');
 });
 
-app.get("/", (req, res) => {
-    res.send("Welcome to Cuadrito Bakeshop!");
-});
 
 app.get("/messages/:sender_id/:receiver_id", async (req, res) => {
     const { sender_id, receiver_id } = req.params;
@@ -66,23 +63,36 @@ io.on("connection", (socket) => {
     console.log("User connected:", socket.id);
 
     socket.on("sendMessage", async ({ sender_id, message, receiver_id }) => {
-        if (!receiver_id || !message.trim()) {
-            console.log("Invalid message or receiver");
+    if (!receiver_id || !message.trim()) {
+        console.log("Invalid message or receiver");
+        return;
+    }
+
+    try {
+        // ✅ Check if receiver_id exists
+        const [rows] = await db.execute(
+            "SELECT id FROM users WHERE id = ?",
+            [receiver_id]
+        );
+
+        if (rows.length === 0) {
+            console.log(`Error: receiver_id ${receiver_id} does not exist.`);
             return;
         }
 
-        try {
-            const [result] = await db.execute(
-                "INSERT INTO messages (sender_id, receiver_id, message, created_at) VALUES (?, ?, ?, NOW())",
-                [sender_id, receiver_id, message]
-            );
+        // ✅ Insert message only if receiver_id is valid
+        const [result] = await db.execute(
+            "INSERT INTO messages (sender_id, receiver_id, message, created_at) VALUES (?, ?, ?, NOW())",
+            [sender_id, receiver_id, message]
+        );
 
-            console.log("Message stored in DB:", result);
-            io.emit("newMessage", { sender_id, receiver_id, message });
-        } catch (err) {
-            console.error("DB Error:", err);
-        }
-    });
+        console.log("Message stored in DB:", result);
+        io.emit("newMessage", { sender_id, receiver_id, message });
+    } catch (err) {
+        console.error("DB Error:", err);
+    }
+});
+
 });
 
 app.get("/messages/:sender_id/:receiver_id", async (req, res) => {

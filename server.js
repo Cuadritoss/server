@@ -32,7 +32,7 @@ const connectDB = async () => {
     try {
         db = mysql.createPool({
             host: "srv1859.hstgr.io",
-            user: "u471919822_cuadritodb",
+            user: "u471919822_cuadrito",
             password: "cuadritoDb_123",
             database: "u471919822_cuadritoDB",
             connectionLimit: 10, // Set connection pool size (adjust as needed)

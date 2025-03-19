@@ -12,11 +12,11 @@ const PORT = process.env.PORT || 10000;  // Use Render-assigned port
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: ["https://cuadritobake.shop"], // ✅ Allow only your frontend
+        origin: ["https://cuadritobake.shop"], 
         methods: ["GET", "POST"],
         credentials: true
     },
-    transports: ["websocket", "polling"] // ✅ Ensure both transports work
+    transports: ["websocket", "polling"] 
 });
 
 app.use(cors({
@@ -33,7 +33,7 @@ const connectDB = async () => {
         db = mysql.createPool({
             host: "srv1859.hstgr.io",
             user: "u471919822_cuadrito",
-            password: "cuadritoDb_123",
+            password: "QuadritoBS_123",
             database: "u471919822_cuadritoDB",
             connectionLimit: 10, // Set connection pool size (adjust as needed)
             connectTimeout: 10000, // Timeout for connections (10 seconds)
